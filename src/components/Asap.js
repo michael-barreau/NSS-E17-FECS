@@ -1,39 +1,26 @@
-import React from "react"
-import { EventCard } from "./event/EventCard"
-import { ContactUsCard } from "./contactUs/ContactUsCard"
-import { AboutUsCard } from "./aboutUs/AboutUsCard"
-import { PropsAndState} from "./PropsAndState"
+import React, {useState} from "react"
+import { NavBar } from "./nav/NavBar"
+import { ApplicationViews } from "../ApplicationViews"
 import "./Asap.css"
 
-export const Asap = () => (
-    <>
-        <h2>A$AP </h2>
-        <small>No Child Left Behind</small>
+export const Asap = () => {
+    const [isAuthenticated, setIsAuthenticated] = useState(sessionStorage.getItem("asap_user") !== null)
 
-        <address>        
-            <div>Coming to A City Near You</div>
-            <div>1203 Shhh Lane</div>
-        </address>
+    const setAuthUser = (user) => {
+        sessionStorage.setItem("asap_user", JSON.stringify(user))
+        setIsAuthenticated(sessionStorage.getItem("asap_user") !== null)
+    }
 
+    const clearUser = () => {
+        sessionStorage.clear();
+        setIsAuthenticated(sessionStorage.getItem("asap_user") !== null)
+      }
     
-        <PropsAndState yourName="Lynn" />
-    
-        <h2>Events</h2>
-        <article className="events">
-            <EventCard />
-            <EventCard />
-            <EventCard />
-        </article>
-
-        <h2>Contact Us</h2>
-        <article className="contact_infos">
-            <ContactUsCard />
-        </article>
-
-        <h2>About Us</h2>
-        <article className="contact_infos">
-            <AboutUsCard />
-        </article>
-
-    </>
-)
+      
+    return (
+        <>
+            <NavBar clearUser={clearUser} isAuthenticated={isAuthenticated}/>
+            <ApplicationViews setAuthUser={setAuthUser} isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated}/>
+        </>
+    )
+}
