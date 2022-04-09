@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { EventCard } from './EventCard';
-import { getAllEvents, getEventById } from '../../modules/EventManager.js';
+import {EventConfirmed} from "./EventConfirmedCard"
+import { getAllConfirmedEvents, getEventById } from '../../modules/EventManager.js';
 // import { useNavigate } from "react-router-dom"
 
-export const EventList = () => {
+export const EventListConfirmed = () => {
   
   const [events, setEvents] = useState([]);
 
   const getEvents = () => {
-    return getAllEvents().then(eventsFromAPI => {
+    return getAllConfirmedEvents().then(eventsFromAPI => {
       setEvents(eventsFromAPI)
     });
   };
@@ -31,10 +31,10 @@ export const EventList = () => {
       </section>
 
       <div className="container-cards">
-        {events.map(event =>
-          <EventCard
-            key={event.id}
-            event={event}
+        {events.map(rsvp =>
+          <EventConfirmed
+            key={rsvp.id}
+            rsvp={rsvp}
           />)}
       </div>
       {/* 

@@ -4,12 +4,13 @@ import { PropsAndState } from './components/PropsAndState'
 
 export const Home = () => (
     <>
-        <h2>A.$.A.P</h2>
-        <small>Here at A.$.A.P we care even when your loved ones can't be there.</small>
+        <h1>A.$.A.P</h1>
+        <h2>Providing (S.O.I.L) Structure, Objectives, Instruction, and Leadership 
+            today so your seeds can become trees tomorrow. 
+        </h2>
 
         <address>
             <div>Visit Us at a site near you</div>
-            <div>300 Ready and Willing Blvd</div>
         </address>
         <PropsAndState yourName={"MDB"} />
     </>

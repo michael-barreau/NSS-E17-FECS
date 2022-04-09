@@ -12,9 +12,9 @@ export const PropsAndState = ({ MDB }) => {
 
   return (
     <>
-      <h3>Welcome, {MDB} </h3>
+      <h3> Number of Students Served {MDB} </h3>
       <p>{countClicks}</p>
-      <button onClick={(handleClick)}>Convert to attending button</button>
+      <button onClick={(handleClick)}>I've attended an event</button>
     </>
   )
 }
